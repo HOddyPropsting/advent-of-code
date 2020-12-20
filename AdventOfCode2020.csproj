@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <None Remove="day1" />
+    <None Remove="day10" />
     <None Remove="day2" />
     <None Remove="day3" />
     <None Remove="day4" />
@@ -19,6 +20,9 @@
 
   <ItemGroup>
     <Content Include="day1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="day10">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="day2">
