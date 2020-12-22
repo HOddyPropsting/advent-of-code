@@ -40,6 +40,8 @@ namespace AdventOfCode2020
             Console.WriteLine("Day 13 Part 2: {0}", Day13Part2());
             Console.WriteLine("Day 14: {0}", Day14());
             Console.WriteLine("Day 14 Part 2: {0}", Day14Part2());
+            Console.WriteLine("Day 15: {0}", Day15());
+            Console.WriteLine("Day 15 Part 2: {0}", Day15Part2());
         }
         static int Day1()
         {
@@ -1354,6 +1356,58 @@ namespace AdventOfCode2020
                 total += value;
             }
             return total;
+        }
+
+        public static int Day15()
+        {
+            List<int> numbers = new List<int>{ 2, 0, 1, 7, 4, 14, 18};
+            Dictionary<int, int> seen = new Dictionary<int, int>();
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                seen[numbers[i]] = i+1;
+            }
+            numbers.Add(0);
+            int turn = numbers.Count;
+            while (turn < 2020)
+            {
+                if(seen.ContainsKey(numbers[turn-1]))
+                {
+                    numbers.Add(turn - seen[numbers[turn - 1]]);
+                    seen[numbers[turn - 1]] = turn;
+                } else
+                {
+                    seen[numbers[turn - 1]] = turn;
+                    numbers.Add(0);
+                }
+                turn++;
+            }
+            return numbers.Last();
+        }
+        public static int Day15Part2()
+        {
+            List<int> numbers = new List<int> { 2, 0, 1, 7, 4, 14, 18 };
+            Dictionary<int, int> seen = new Dictionary<int, int>();
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                seen[numbers[i]] = i + 1;
+            }
+            numbers.Add(0);
+            int turn = numbers.Count;
+            while (turn < 30000000)
+            {
+                if (seen.ContainsKey(numbers[turn - 1]))
+                {
+                    numbers.Add(turn - seen[numbers[turn - 1]]);
+                    seen[numbers[turn - 1]] = turn;
+                }
+                else
+                {
+                    seen[numbers[turn - 1]] = turn;
+                    numbers.Add(0);
+                }
+                turn++;
+            }
+            return numbers.Last();
         }
 
     }
