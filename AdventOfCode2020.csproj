@@ -17,6 +17,8 @@
     <None Remove="day19" />
     <None Remove="day19Test.txt" />
     <None Remove="day2" />
+    <None Remove="day20" />
+    <None Remove="day20Test" />
     <None Remove="day3" />
     <None Remove="day4" />
     <None Remove="day5" />
@@ -58,6 +60,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="day2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="day20">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="day20Test">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="day3">
