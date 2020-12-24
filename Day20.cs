@@ -53,15 +53,70 @@ namespace AdventOfCode2020
                         }
                     }
                 }
-                if (c + m == 2) product *= tiles[i].Item1;
+                if (c + m == 2)
+                {
+                    Console.WriteLine(tiles[i].Item1);
+                    product *= tiles[i].Item1;
+                }
             }
 
             return product;
         }
 
+        class Tile
+        {
+            public int id;
+            public char[][] tile;
+
+            public Tile(int id, int l)
+            {
+                this.id = id;
+                tile = new char[l-1][];
+                for (int i = 0; i < l; i++)
+                    tile[i] = new char[l-1];
+            }
+
+            public List<char[]> sides()
+            {
+                List<char[]> side = new List<char[]>();
+                side.Add(tile[0]);
+                side.Add(tile[tile.GetLength(0)]);
+                return side;
+            }
+
+            public char[][] flip()
+            {
+                char[][] t = new char[tile.GetLength(0)][];
+                for(int i = 0; i < tile.GetLength(0); i++)
+                {
+                    t[i] = new char[tile.GetLength(1)];
+                    for(int j =0; j < tile.GetLength(1); j++)
+                    {
+                        t[i][j] = tile[j][i];
+                    }
+                }
+                return t;
+            }
+
+            public char[][] rot()
+            {
+                char[][] t = new char[tile.GetLength(0)][];
+                for (int i = 0; i < tile.GetLength(0); i++)
+                {
+                    t[i] = new char[tile.GetLength(1)];
+                    for (int j = 0; j < tile.GetLength(1); j++)
+                    {
+                        t[i][j] = tile[tile.GetLength(1) - j - 1][i];
+                    }
+                }
+                return t;
+            }
+        }
+
         public static long Part2()
         {
-            List<(int, List<string>)> tiles = new List<(int, List<string>)>();
+            List<Tile> tiles = new List<Tile>();
+            Regex rx = new Regex("([0-9]+):");
             int counter = 0;
             using (Stream stream = File.Open(@"day20", FileMode.Open))
             using (TextReader sr = new StreamReader(stream, Encoding.UTF8))
@@ -69,11 +124,21 @@ namespace AdventOfCode2020
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Length == 0 || line[0] == 'T') continue;
-                    foreach (var c in line)
-                        if (c == '#') counter++;
+                    if (line.Length == 0) continue;
+                    int tileId = Int32.Parse(rx.Match(line).Value.Trim(':'));
+                    Tile t = new Tile(tileId, 10);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        line = sr.ReadLine();
+                        t.tile[i] = line.ToArray();
+                    }
+                    tiles.Add(t);
                 }
             }
+
+
+
+
             return counter - 30;
         }
     }
