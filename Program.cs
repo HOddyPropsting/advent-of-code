@@ -51,7 +51,7 @@ namespace AdventOfCode2020
             Console.WriteLine("Day 19: {0}", Day19.Part1());
             Console.WriteLine("Day 19 Part 2: {0}", Day19.Part2());
             Console.WriteLine("Day 20: {0}", Day20.Part1());
-          //  Console.WriteLine("Day 20 Part 2: {0}", Day20.Part2());
+            Console.WriteLine("Day 20 Part 2: {0}", Day20.Part2());
         }
 
         
