@@ -19,6 +19,8 @@
     <None Remove="day2" />
     <None Remove="day20" />
     <None Remove="day20Test" />
+    <None Remove="day21" />
+    <None Remove="day21Test" />
     <None Remove="day3" />
     <None Remove="day4" />
     <None Remove="day5" />
@@ -66,6 +68,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="day20Test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="day21">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="day21Test">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="day3">
