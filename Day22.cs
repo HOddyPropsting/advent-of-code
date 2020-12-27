@@ -98,14 +98,23 @@ namespace AdventOfCode2020
 
         public static bool game(Queue<int> p1, Queue<int> p2)
         {
-            HashSet<int> played = new HashSet<int>();
-
-            int c1 = Int32.MaxValue;
-            int c2 = Int32.MaxValue;
+            HashSet<string> played = new HashSet<string>();
+            int c1;
+            int c2;
             while ((p1.Count != 0 && p2.Count != 0))
             {
                 bool p1Win = true;
-                var current = GetSequenceHashCode(p1.ToList().Concat(p2).ToList());
+                StringBuilder sb = new StringBuilder();
+                foreach(var p in p1)
+                {
+                    sb.Append(p);
+                }
+                sb.Append("|");
+                foreach (var p in p2)
+                {
+                    sb.Append(p);
+                }
+                var current = sb.ToString();
                 c1 = p1.Dequeue();
                 c2 = p2.Dequeue();
                 if (played.Contains(current))
